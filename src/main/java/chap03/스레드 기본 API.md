@@ -122,3 +122,29 @@ try {
 
 
 <img width="1050" alt="image" src="https://github.com/saechimdaeki/Dev-Diary/assets/40031858/d17930a1-000b-400a-a767-71869af4ff89">
+
+---
+
+## name() / currentThread() / isAlive()
+
+### Thread Name
+- 멀티 스레드 환경에서 어떤 스레드가 실행 중인지 알아야 할 경우 스레드에 사용자 이름을 지정하면 실행 중인 스레드를 쉽게 찾을 수 있다
+- 디버깅할 때 어떤 스레드가 무슨 작업을 하고 있는지 정확하게 파악하기 위해서 스레드 이름을 정하는 것이 큰 도움이 된다
+- 자바에서 스레드가 생성되면 스레드 이름이 자동으로 주어진다. 이건 사용자가 정하는 것이 아니다
+  - 가장 먼저 생성되는 메인 스레드의 이름은 main 이다. 
+  - 스레드 이름은 Thread-0, Thread-1, Thread-2, .. Thread-n 과 같이  0 부터 순차적으로 숫자를 증가하면서 이름이 만들어진다
+- 자바에서 사용자가 스레드 이름을 정할 수 있으며 두 가지 방법으로 가능하다
+  - 스레드 객체 생성 시 인자로 전달
+    - Thread myThread = new Thread([ThreadGroup],[Runnable],“myThread”);
+  - setName(String name) 으로 설정
+    - myThread.setName(“myThread”);
+  - getName() 으로 스레드 이름 참조
+    - myThread.getName();
+
+### currentThread()
+- Thread 클래스의 정적 메서드로서 현재 실행 중인 스레드 개체에 대한 참조를 반환한다
+- ex) Thread.currentThread().getName(), if(Thread.currentThread() == thread)
+
+### isAlive()
+- 스레드가 살아 있는지 여부를 알 수 있다
+- 스레드의 start() 메서드가 호출되고 스레드가 아직 종료되지 않은 경우 스레드가 활성 상태인 것으로 간주되어 true 를 반환한다 
